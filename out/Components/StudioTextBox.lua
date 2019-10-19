@@ -1,13 +1,13 @@
 -- Compiled with https://roblox-ts.github.io v0.2.14
--- October 18, 2019, 7:26 PM Pacific Daylight Time
+-- October 18, 2019, 7:45 PM Pacific Daylight Time
 
 local TS = _G[script];
-local exports;
+local exports = {};
+local StudioTextBox;
 local Roact = TS.import(TS.getModule("roact").roact.src);
 local DeriveColorModifier = TS.import(script.Parent.Parent, "Common", "StudioComponentUtilities").DeriveColorModifier;
-local _0;
 do
-	local StudioTextBox = Roact.Component:extend("StudioTextBox");
+	StudioTextBox = Roact.Component:extend("StudioTextBox");
 	function StudioTextBox:init(props)
 		self:setState({
 			CurrentText = self.props.Text;
@@ -22,11 +22,11 @@ do
 	function StudioTextBox:render()
 		local theme = settings().Studio.Theme;
 		local styleGuideModifier = DeriveColorModifier(self.props, self.state);
-				local _1;
+				local _0;
 				if self.state.CurrentText ~= nil and self.state.CurrentText ~= "" then
-					_1 = self.state.CurrentText;
+					_0 = self.state.CurrentText;
 				else
-					_1 = self.props.PlaceholderText;
+					_0 = self.props.PlaceholderText;
 				end;
 		return Roact.createElement("Frame", {
 			Active = self.props.Active,
@@ -106,7 +106,7 @@ do
 				Font = Enum.Font.SourceSans,
 				Position = UDim2.new(0.5, 0, 0.5, 0),
 				Size = UDim2.new(1, -4, 1, -4),
-				Text = _1,
+				Text = _0,
 				TextColor3 = theme:GetColor(Enum.StudioStyleGuideColor.MainText, Enum.StudioStyleGuideModifier.Disabled),
 				TextSize = 16,
 				TextXAlignment = self.props.TextXAlignment,
@@ -129,7 +129,6 @@ do
 		Width = UDim.new(1, 0);
 		Visible = true;
 	};
-	_0 = StudioTextBox;
 end;
-exports = _0;
+exports.StudioTextBox = StudioTextBox;
 return exports;

@@ -1,13 +1,13 @@
 -- Compiled with https://roblox-ts.github.io v0.2.14
--- October 18, 2019, 7:26 PM Pacific Daylight Time
+-- October 18, 2019, 7:45 PM Pacific Daylight Time
 
 local TS = _G[script];
-local exports;
+local exports = {};
+local StudioTextButton;
 local Roact = TS.import(TS.getModule("roact").roact.src);
 local DeriveColorModifier = TS.import(script.Parent.Parent, "Common", "StudioComponentUtilities").DeriveColorModifier;
-local _0;
 do
-	local StudioTextButton = Roact.Component:extend("StudioTextButton");
+	StudioTextButton = Roact.Component:extend("StudioTextButton");
 	function StudioTextButton:init(props)
 		self:setState({
 			IsMouseOver = false;
@@ -87,7 +87,6 @@ do
 		Width = UDim.new(1, 0);
 		Visible = true;
 	};
-	_0 = StudioTextButton;
 end;
-exports = _0;
+exports.StudioTextButton = StudioTextButton;
 return exports;

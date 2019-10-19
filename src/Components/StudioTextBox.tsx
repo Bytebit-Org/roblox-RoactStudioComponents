@@ -5,7 +5,7 @@ import { DeriveColorModifier } from "../Common/StudioComponentUtilities";
 import IStudioTextBoxProperties from "../Interfaces/IStudioTextBoxProperties";
 import IStudioTextBoxState from "../Interfaces/IStudioTextBoxState";
 
-export = class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, IStudioTextBoxState> {
+export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, IStudioTextBoxState> {
     public static readonly HeightUDim = new UDim(0, 22);
     public static readonly defaultProps = {
         Active: true,

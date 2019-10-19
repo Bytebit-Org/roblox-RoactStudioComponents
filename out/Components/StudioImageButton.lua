@@ -1,13 +1,13 @@
 -- Compiled with https://roblox-ts.github.io v0.2.14
--- October 18, 2019, 7:26 PM Pacific Daylight Time
+-- October 18, 2019, 7:45 PM Pacific Daylight Time
 
 local TS = _G[script];
-local exports;
+local exports = {};
+local StudioImageButton;
 local Roact = TS.import(TS.getModule("roact").roact.src);
 local DeriveColorModifier = TS.import(script.Parent.Parent, "Common", "StudioComponentUtilities").DeriveColorModifier;
-local _0;
 do
-	local StudioImageButton = Roact.Component:extend("StudioImageButton");
+	StudioImageButton = Roact.Component:extend("StudioImageButton");
 	function StudioImageButton:init(props)
 		self:setState({
 			IsMouseOver = false;
@@ -18,17 +18,17 @@ do
 	function StudioImageButton:render()
 		local theme = settings().Studio.Theme;
 		local styleGuideModifier = DeriveColorModifier(self.props, self.state);
-			local _1;
+			local _0;
 			if self.props.LayoutOrder ~= nil then
-				_1 = self.props.LayoutOrder;
+				_0 = self.props.LayoutOrder;
+			else
+				_0 = 0;
+			end;
+			local _1;
+			if self.props.Rotation ~= nil then
+				_1 = self.props.Rotation;
 			else
 				_1 = 0;
-			end;
-			local _2;
-			if self.props.Rotation ~= nil then
-				_2 = self.props.Rotation;
-			else
-				_2 = 0;
 			end;
 		return Roact.createElement("TextButton", {
 			Active = self.props.Active,
@@ -37,9 +37,9 @@ do
 			BackgroundColor3 = theme:GetColor(self.props.BackgroundColorEnum, styleGuideModifier),
 			BorderColor3 = theme:GetColor(self.props.BorderColorEnum, styleGuideModifier),
 			BorderSizePixel = 1,
-			LayoutOrder = _1,
+			LayoutOrder = _0,
 			Position = self.props.Position,
-			Rotation = _2,
+			Rotation = _1,
 			Size = UDim2.new(self.props.Width, StudioImageButton.HeightUDim),
 			Text = "",
 			Visible = self.props.Visible,
@@ -106,7 +106,6 @@ do
 		Width = UDim.new(1, 0);
 		Visible = true;
 	};
-	_0 = StudioImageButton;
 end;
-exports = _0;
+exports.StudioImageButton = StudioImageButton;
 return exports;

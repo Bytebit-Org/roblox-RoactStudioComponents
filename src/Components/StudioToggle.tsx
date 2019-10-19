@@ -17,7 +17,7 @@ const _IMAGES = new Map<string, Map<boolean, string>>([
 	])]
 ])
 
-export = class StudioToggle extends Roact.Component<IStudioToggleProperties, IStudioToggleState> {
+export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStudioToggleState> {
     constructor(props: IStudioToggleProperties) {
         super(props);
         

@@ -1,13 +1,13 @@
 -- Compiled with https://roblox-ts.github.io v0.2.14
--- October 18, 2019, 7:26 PM Pacific Daylight Time
+-- October 18, 2019, 7:45 PM Pacific Daylight Time
 
 local TS = _G[script];
-local exports;
+local exports = {};
+local StudioTextLabel;
 local Roact = TS.import(TS.getModule("roact").roact.src);
 local DeriveColorModifier = TS.import(script.Parent.Parent, "Common", "StudioComponentUtilities").DeriveColorModifier;
-local _0;
 do
-	local StudioTextLabel = Roact.Component:extend("StudioTextLabel");
+	StudioTextLabel = Roact.Component:extend("StudioTextLabel");
 	function StudioTextLabel:init(props)
 	end;
 	function StudioTextLabel:render()
@@ -44,7 +44,6 @@ do
 		Width = UDim.new(1, 0);
 		Visible = true;
 	};
-	_0 = StudioTextLabel;
 end;
-exports = _0;
+exports.StudioTextLabel = StudioTextLabel;
 return exports;

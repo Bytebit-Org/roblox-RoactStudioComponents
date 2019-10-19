@@ -5,7 +5,7 @@ import { DeriveColorModifier } from "../Common/StudioComponentUtilities";
 import IStudioTextLabelProperties from "../Interfaces/IStudioTextLabelProperties";
 import IStudioComponentState from "../Interfaces/IStudioComponentState";
 
-export = class StudioTextLabel extends Roact.Component<IStudioTextLabelProperties, IStudioComponentState> {
+export class StudioTextLabel extends Roact.Component<IStudioTextLabelProperties, IStudioComponentState> {
     public static readonly HeightUDim = new UDim(0, 22);
     public static readonly defaultProps = {
         Active: true,

@@ -1,14 +1,14 @@
 -- Compiled with https://roblox-ts.github.io v0.2.14
--- October 18, 2019, 7:26 PM Pacific Daylight Time
+-- October 18, 2019, 7:45 PM Pacific Daylight Time
 
 local TS = _G[script];
-local exports;
+local exports = {};
 local Roact = TS.import(TS.getModule("roact").roact.src);
 local Signal = TS.import(TS.getModule("roblox-SignalsTooling").out).Signal;
 local HttpService = TS.import(TS.getModule("services")).HttpService;
-local _0;
+local StudioDialogFrame;
 do
-	local StudioDialogFrame = setmetatable({}, {
+	StudioDialogFrame = setmetatable({}, {
 		__tostring = function() return "StudioDialogFrame" end;
 	});
 	StudioDialogFrame.__index = StudioDialogFrame;
@@ -56,7 +56,6 @@ do
 		end;
 		self._Handle = Roact.mount(contents, self._DockWidgetPluginGui);
 	end;
-	_0 = StudioDialogFrame;
 end;
-exports = _0;
+exports.StudioDialogFrame = StudioDialogFrame;
 return exports;

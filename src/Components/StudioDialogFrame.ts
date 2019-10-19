@@ -5,7 +5,7 @@ import { HttpService } from "@rbxts/services";
 /**
  * Controls a dialog frame
  */
-export = class StudioDialogFrame {
+export class StudioDialogFrame {
 	private _DockWidgetPluginGui: DockWidgetPluginGui;
 	private _Handle?: Roact.ComponentInstanceHandle;
 

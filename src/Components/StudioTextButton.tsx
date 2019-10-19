@@ -5,7 +5,7 @@ import { DeriveColorModifier } from "../Common/StudioComponentUtilities";
 import IStudioTextButtonProperties from "../Interfaces/IStudioTextButtonProperties";
 import IStudioComponentState from "../Interfaces/IStudioComponentState";
 
-export = class StudioTextButton extends Roact.Component<IStudioTextButtonProperties, IStudioComponentState> {
+export class StudioTextButton extends Roact.Component<IStudioTextButtonProperties, IStudioComponentState> {
     public static readonly HeightUDim = new UDim(0, 22);
     public static readonly defaultProps = {
         Active: true,

@@ -5,7 +5,7 @@ import IStudioComponentState from "../Interfaces/IStudioComponentState";
 const _POSITION_ADDER = new UDim2(0, 1, 0, 1);
 const _SIZE_ADDER = new UDim2(0, -2, 0, -2);
 
-export = class StudioFrame extends Roact.Component<IStudioFrameProperties, IStudioComponentState> {
+export class StudioFrame extends Roact.Component<IStudioFrameProperties, IStudioComponentState> {
     public static readonly defaultProps = {
         Active: true,
         AnchorPoint: new Vector2(0, 0),

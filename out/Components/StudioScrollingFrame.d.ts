@@ -1,22 +1,10 @@
-/// <reference types="@rbxts/roact" />
 /// <reference types="@rbxts/types" />
+/// <reference types="@rbxts/roact" />
 import Roact from "@rbxts/roact";
 import IStudioScrollingFrameProperties from "../Interfaces/IStudioScrollingFrameProperties";
 import IStudioComponentState from "../Interfaces/IStudioComponentState";
-declare const _default: {
-    new (p: IStudioScrollingFrameProperties & RbxJsxProps): {
-        render(): Roact.Element;
-        props: IStudioScrollingFrameProperties & StatefulComponentProps;
-        state: IStudioComponentState;
-        didMount(): void;
-        willUnmount(): void;
-        shouldUpdate(nextProps: IStudioScrollingFrameProperties, nextState: IStudioComponentState): boolean;
-        willUpdate(nextProps: IStudioScrollingFrameProperties, nextState: IStudioComponentState): void;
-        didUpdate(previousProps: IStudioScrollingFrameProperties, previousState: IStudioComponentState): void;
-        setState<K extends "IsMouseOver" | "IsSelected" | "IsPressed">(state: (prevState: Readonly<IStudioComponentState>, props: IStudioScrollingFrameProperties) => Roact.ContainsKeys<IStudioComponentState, K>): void;
-        setState<K_1 extends "IsMouseOver" | "IsSelected" | "IsPressed">(state: Roact.ContainsKeys<IStudioComponentState, K_1>): void;
-    };
-    readonly defaultProps: {
+export declare class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameProperties, IStudioComponentState> {
+    static readonly defaultProps: {
         Active: boolean;
         AnchorPoint: Vector2;
         CanvasPosition: Vector2;
@@ -31,6 +19,5 @@ declare const _default: {
         VerticalScrollBarPosition: Enum.VerticalScrollBarPosition.Right;
         Visible: boolean;
     };
-    validateProps(props: {}): LuaTuple<[false, string]> | LuaTuple<[true]>;
-};
-export = _default;
+    render(): Roact.Element;
+}
