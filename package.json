@@ -1,0 +1,24 @@
+{
+  "name": "@rbxts/roblox-RoactStudioComponents",
+  "version": "1.0.0",
+  "description": "Meant for being used for plugin development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bytebit-Org/roblox-RoactStudioComponents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bytebit-Org/roblox-RoactStudioComponents/issues"
+  },
+  "homepage": "https://github.com/Bytebit-Org/roblox-RoactStudioComponents#readme",
+  "private": false,
+  "devDependencies": {
+    "@rbxts/types": "^1.0.282"
+  }
+}
