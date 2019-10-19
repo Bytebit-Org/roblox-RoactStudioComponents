@@ -20,5 +20,10 @@
   "private": false,
   "devDependencies": {
     "@rbxts/types": "^1.0.282"
+  },
+  "dependencies": {
+    "@rbxts/roact": "^1.1.5",
+    "@rbxts/roblox-SignalsTooling": "git+https://github.com/Bytebit-Org/roblox-SignalsTooling.git",
+    "@rbxts/services": "^1.0.28"
   }
 }
