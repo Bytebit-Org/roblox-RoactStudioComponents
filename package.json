@@ -2,7 +2,8 @@
   "name": "@rbxts/roblox-RoactStudioComponents",
   "version": "1.0.0",
   "description": "Meant for being used for plugin development.",
-  "main": "index.js",
+  "main": "out/init.lua",
+  "types": "out/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
