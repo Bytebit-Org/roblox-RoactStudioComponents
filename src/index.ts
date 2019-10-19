@@ -6,12 +6,12 @@ import StudioTextButton = require("./Components/StudioTextButton");
 import StudioTextLabel = require("./Components/StudioTextLabel");
 import StudioToggle = require("./Components/StudioToggle");
 
-export = {
-	StudioDialogFrame: StudioDialogFrame,
-	StudioFrame: StudioFrame,
-	StudioImageButton: StudioImageButton,
-	StudioTextBox: StudioTextBox,
-	StudioTextButton: StudioTextButton,
-	StudioTextLabel: StudioTextLabel,
-	StudioToggle: StudioToggle	
+export {
+	StudioDialogFrame,
+	StudioFrame,
+	StudioImageButton,
+	StudioTextBox,
+	StudioTextButton,
+	StudioTextLabel,
+	StudioToggle	
 };
