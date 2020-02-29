@@ -1,11 +1,11 @@
 {
-  "name": "@rbxts/roblox-RoactStudioComponents",
-  "version": "1.0.0",
+  "name": "@rbxts/roact-studio-components",
+  "version": "0.0.1",
   "description": "Meant for being used for plugin development.",
   "main": "out/init.lua",
   "types": "out/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "rbxtsc"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,10 @@
   },
   "dependencies": {
     "@rbxts/roact": "^1.1.5",
-    "@rbxts/roblox-SignalsTooling": "git+https://github.com/Bytebit-Org/roblox-SignalsTooling.git",
-    "@rbxts/services": "^1.0.28"
-  }
+    "@rbxts/services": "^1.0.28",
+    "@rbxts/signals-tooling": "^1.0.2"
+  },
+  "files": [
+    "out"
+  ]
 }

@@ -1,5 +1,5 @@
 import Roact from "@rbxts/roact";
-import { Signal } from "@rbxts/roblox-SignalsTooling";
+import { Signal } from "@rbxts/signals-tooling";
 import { HttpService } from "@rbxts/services";
 
 /**
@@ -9,8 +9,8 @@ export class StudioDialogFrame {
 	private _DockWidgetPluginGui: DockWidgetPluginGui;
 	private _Handle?: Roact.ComponentInstanceHandle;
 
-	public readonly Opened = new Signal<[]>();
-	public readonly Closed = new Signal<[]>();
+	public readonly Opened = new Signal();
+	public readonly Closed = new Signal();
 
 	constructor(pluginReference: Plugin, name: string, title: string, size: Vector2, dockWidgetPluginGuiId?: string) {
 		if (dockWidgetPluginGuiId === undefined) {
@@ -28,10 +28,10 @@ export class StudioDialogFrame {
 		const dockWidgetPluginGui = pluginReference.CreateDockWidgetPluginGui(dockWidgetPluginGuiId, dockWidgetPluginGuiInfo);
 		dockWidgetPluginGui.GetPropertyChangedSignal("Enabled").Connect(() => {
 			if (dockWidgetPluginGui.Enabled) {
-				this.Opened.Fire();
+				this.Opened.fire();
 			}
 			else {
-				this.Closed.Fire();
+				this.Closed.fire();
 			}
 		});
 		dockWidgetPluginGui.Name = name;
@@ -51,8 +51,8 @@ export class StudioDialogFrame {
 	 * Destroys the dialog frame.
 	 */
 	public Destroy() {
-		this.Opened.DisconnectAll();
-		this.Closed.DisconnectAll();
+		this.Opened.disconnectAll();
+		this.Closed.disconnectAll();
 
 		if (this._Handle !== undefined) {
 		Roact.unmount(this._Handle);
