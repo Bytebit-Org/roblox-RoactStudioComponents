@@ -5,6 +5,7 @@ interface IStudioScrollingFrameProperties extends IStudioComponentProperties {
     [Roact.Children]?: Roact.Element[],
     // Scrolling frame wrapper
     AnchorPoint?: Vector2,
+    BorderSizePixel?: number,
     CanvasPosition?: Vector2,
     CanvasSize?: UDim2,
     ElasticBehavior?: Enum.ElasticBehavior,
