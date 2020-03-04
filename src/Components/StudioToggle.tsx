@@ -3,19 +3,9 @@
 import Roact from "@rbxts/roact";
 import IStudioToggleProperties from "../Interfaces/IStudioToggleProperties";
 import IStudioToggleState from "../Interfaces/IStudioToggleState";
+import { StudioComponentSprites } from "Data/Spritesheets";
 
 const _SIZE = new UDim2(0, 27, 0, 16);
-
-const _IMAGES = new Map<string, Map<boolean, string>>([
-	["Dark", new Map<boolean, string>([
-		[false, "rbxasset://textures/TerrainTools/import_toggleOff_dark.png"],
-		[true, "rbxasset://textures/TerrainTools/import_toggleOn_dark.png"]
-	])],
-	["Light", new Map<boolean, string>([
-		[false, "rbxasset://textures/TerrainTools/import_toggleOff.png"],
-		[true, "rbxasset://textures/TerrainTools/import_toggleOn.png"]
-	])]
-])
 
 export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStudioToggleState> {
     constructor(props: IStudioToggleProperties) {
@@ -32,6 +22,8 @@ export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStud
     public render(): Roact.Element {
 		const theme = settings().Studio.Theme;
 
+		const spriteRegion = this.getSpriteRegion(theme, this.state.IsOn);
+
         return <imagebutton
 			Key={"Toggle"}
 			Active={this.props.Active !== undefined ? this.props.Active : true}
@@ -39,7 +31,9 @@ export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStud
             BackgroundTransparency={1}
             BorderSizePixel={0}
 			LayoutOrder={this.props.LayoutOrder !== undefined ? this.props.LayoutOrder : 0}
-			Image={_IMAGES.get(theme.Name)!.get(this.state.IsOn)}
+			Image={StudioComponentSprites.image}
+			ImageRectOffset={spriteRegion.offset}
+			ImageRectSize={spriteRegion.size}
             Rotation={this.props.Rotation !== undefined ? this.props.Rotation : 0}
             Size={_SIZE}
             Visible={this.props.Visible !== undefined ? this.props.Visible : true}
@@ -56,5 +50,21 @@ export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStud
                     }
 				}
 			}} />;
-    }
+	}
+	
+	private getSpriteRegion(theme: StudioTheme, isOn: boolean) {
+		if (theme.Name === "Light") {
+			if (isOn) {
+				return StudioComponentSprites.sprites.toggleOnLight;
+			} else {
+				return StudioComponentSprites.sprites.toggleOffLight;
+			}
+		} else {
+			if (isOn) {
+				return StudioComponentSprites.sprites.toggleOnDark;
+			} else {
+				return StudioComponentSprites.sprites.toggleOffDark;
+			}
+		}
+	}
 }
