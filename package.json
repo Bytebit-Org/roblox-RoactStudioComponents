@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/roact-studio-components",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Meant for being used for plugin development.",
   "main": "out/init.lua",
   "types": "out/index.d.ts",
