@@ -221,14 +221,17 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 					ClipsDescendants={true}
 					Position={new UDim2(0, 0, 0, 0)}
 					Size={windowSize}
-					Event={{
-						Changed: (instance, propertyName) => {
+					Ref={instance => {
+						// Ugly hack because roblox-ts types are weird about `Changed`
+						// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+						const changedEvent = instance.Changed as RBXScriptSignal<(propertyName: string) => void>;
+						changedEvent.Connect(propertyName => {
 							if (propertyName === "AbsoluteSize") {
 								this.setState({
 									AbsoluteWindowSize: instance.AbsoluteSize,
 								});
 							}
-						},
+						});
 					}}
 				>
 					<frame
