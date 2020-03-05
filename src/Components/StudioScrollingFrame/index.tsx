@@ -5,6 +5,7 @@ import IStudioScrollingFrameProperties from "../../Interfaces/IStudioScrollingFr
 import IStudioScrollingFrameState from "Interfaces/IStudioScrollingFrameState";
 import { Constants } from "Data/Constants";
 import { StudioScrollBar } from "./StudioScrollBar";
+import { vector2FuzzyEquals } from "Common/Vector2FuzzyEquals";
 
 export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameProperties, IStudioScrollingFrameState> {
 	public static readonly defaultProps = {
@@ -13,7 +14,7 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 		BorderMode: Enum.BorderMode.Outline,
 		BorderSizePixel: 1,
 		CanvasPosition: new Vector2(0, 0),
-		CanvasSize: new UDim2(1, 0, 2, 0),
+		CanvasSize: new UDim2(1, 0, 1, 0),
 		HorizontalScrollBarInset: Enum.ScrollBarInset.None,
 		HorizontalScrollStepSizeInPixels: 12,
 		Position: new UDim2(0, 0, 0, 0),
@@ -35,21 +36,75 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 		});
 	}
 
+	public getDerivedStateFromProps(
+		this: void,
+		nextProps: IStudioScrollingFrameProperties,
+		previousState: IStudioScrollingFrameState,
+	) {
+		if (
+			nextProps.CanvasPosition !== undefined &&
+			previousState.CurrentCanvasPosition !== undefined &&
+			vector2FuzzyEquals(nextProps.CanvasPosition, previousState.CurrentCanvasPosition)
+		) {
+			return {
+				CurrentCanvasPosition: nextProps.CanvasPosition,
+			};
+		}
+	}
+
+	public didUpdate(previousProps: IStudioScrollingFrameProperties, previousState: IStudioScrollingFrameState) {
+		let didCanvasViewDimensionsChange = false;
+
+		if (
+			this.state.CurrentCanvasPosition !== undefined &&
+			previousState.CurrentCanvasPosition !== undefined &&
+			!vector2FuzzyEquals(this.state.CurrentCanvasPosition, previousState.CurrentCanvasPosition)
+		) {
+			didCanvasViewDimensionsChange = true;
+		} else if (
+			previousProps.CanvasSize !== undefined &&
+			this.props.CanvasSize !== undefined &&
+			previousProps.CanvasSize !== this.props.CanvasSize
+		) {
+			didCanvasViewDimensionsChange = true;
+		} else if (
+			this.state.AbsoluteWindowSize !== undefined &&
+			previousState.AbsoluteWindowSize !== undefined &&
+			!vector2FuzzyEquals(this.state.AbsoluteWindowSize, previousState.AbsoluteWindowSize)
+		) {
+			didCanvasViewDimensionsChange = true;
+		}
+
+		if (didCanvasViewDimensionsChange) {
+			if (
+				this.state.CurrentCanvasPosition !== undefined &&
+				this.state.AbsoluteWindowSize !== undefined &&
+				this.props.Events !== undefined &&
+				this.props.Events.CanvasViewDimensionsChanged !== undefined
+			) {
+				this.props.Events.CanvasViewDimensionsChanged(
+					this.state.CurrentCanvasPosition,
+					this.state.CurrentCanvasPosition.add(this.state.AbsoluteWindowSize),
+				);
+			}
+		}
+	}
+
 	public render(): Roact.Element {
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		const props = this.props as Required<IStudioScrollingFrameProperties>;
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		const state = this.state as Required<IStudioScrollingFrameState>;
+
 		const theme = settings().Studio.Theme;
 
-		const absoluteCanvasSize = new Vector2(
-			props.CanvasSize.X.Scale * this.state.AbsoluteWindowSize.X + props.CanvasSize.X.Offset,
-			props.CanvasSize.Y.Scale * this.state.AbsoluteWindowSize.Y + props.CanvasSize.Y.Offset,
-		);
+		const absoluteCanvasSize = this.computeAbsoluteCanvasSize();
 
-		const windowXViewSizePercentage = this.state.AbsoluteWindowSize.X / absoluteCanvasSize.X;
-		const windowYViewSizePercentage = this.state.AbsoluteWindowSize.Y / absoluteCanvasSize.Y;
+		const windowXViewSizePercentage = state.AbsoluteWindowSize.X / absoluteCanvasSize.X;
+		const windowYViewSizePercentage = state.AbsoluteWindowSize.Y / absoluteCanvasSize.Y;
 
-		const windowXViewPositionPercentage = this.state.CurrentCanvasPosition.X / absoluteCanvasSize.X;
-		const windowYViewPositionPercentage = this.state.CurrentCanvasPosition.Y / absoluteCanvasSize.Y;
+		const windowXViewPositionPercentage = state.CurrentCanvasPosition.X / absoluteCanvasSize.X;
+		const windowYViewPositionPercentage = state.CurrentCanvasPosition.Y / absoluteCanvasSize.Y;
 
 		const isVerticalScrollbarVisible =
 			props.ScrollingEnabled &&
@@ -179,9 +234,7 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 					<frame
 						Key={`ScrollingFrameCanvas`}
 						BackgroundTransparency={1}
-						Position={
-							new UDim2(0, -this.state.CurrentCanvasPosition.X, 0, -this.state.CurrentCanvasPosition.Y)
-						}
+						Position={new UDim2(0, -state.CurrentCanvasPosition.X, 0, -state.CurrentCanvasPosition.Y)}
 						Size={props.CanvasSize}
 					>
 						{this.props[Roact.Children]}
@@ -189,6 +242,18 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 				</frame>
 				{scrollBars}
 			</frame>
+		);
+	}
+
+	private computeAbsoluteCanvasSize() {
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		const props = this.props as Required<IStudioScrollingFrameProperties>;
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		const state = this.state as Required<IStudioScrollingFrameState>;
+
+		return new Vector2(
+			props.CanvasSize.X.Scale * state.AbsoluteWindowSize.X + props.CanvasSize.X.Offset,
+			props.CanvasSize.Y.Scale * state.AbsoluteWindowSize.Y + props.CanvasSize.Y.Offset,
 		);
 	}
 
@@ -200,12 +265,20 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 		const isVerticalAxis = axis === Enum.ScrollingDirection.Y;
 
 		const relevantCanvasLength = isVerticalAxis ? absoluteCanvasSize.Y : absoluteCanvasSize.X;
-		const canvasLengthInPixelsTraveled = relevantCanvasLength * trackLengthPercentageTraveled;
+		const rawCanvasLengthInPixelsTraveled = relevantCanvasLength * trackLengthPercentageTraveled;
+		const roundedCanvasLengthInPixelsTraveled =
+			rawCanvasLengthInPixelsTraveled % 1 <= 0.5
+				? math.floor(rawCanvasLengthInPixelsTraveled)
+				: math.ceil(rawCanvasLengthInPixelsTraveled);
 
 		this.setState(prevState => {
+			if (prevState.CurrentCanvasPosition === undefined) {
+				return;
+			}
+
 			const newCanvasPositionValue = this.clampCanvasPositionValue(
 				(isVerticalAxis ? prevState.CurrentCanvasPosition.Y : prevState.CurrentCanvasPosition.X) +
-					canvasLengthInPixelsTraveled,
+					roundedCanvasLengthInPixelsTraveled,
 				isVerticalAxis,
 				absoluteCanvasSize,
 			);
@@ -231,6 +304,10 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 			: props.HorizontalScrollStepSizeInPixels;
 
 		this.setState(prevState => {
+			if (prevState.CurrentCanvasPosition === undefined) {
+				return;
+			}
+
 			const newCanvasPositionValue = this.clampCanvasPositionValue(
 				(isVerticalAxis ? prevState.CurrentCanvasPosition.Y : prevState.CurrentCanvasPosition.X) +
 					direction * scrollStepSizeInPixels,
@@ -251,6 +328,10 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 		isVerticalAxis: boolean,
 		absoluteCanvasSize: Vector2,
 	) {
+		if (this.state.AbsoluteWindowSize === undefined) {
+			return 0;
+		}
+
 		return math.clamp(
 			canvasPositionValue,
 			0,

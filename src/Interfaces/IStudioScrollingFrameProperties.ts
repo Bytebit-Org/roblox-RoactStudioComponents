@@ -20,7 +20,7 @@ interface IStudioScrollingFrameProperties extends IStudioComponentProperties {
 	VerticalScrollStepSizeInPixels?: number;
 
 	Events?: {
-		Changed?: (instance: ScrollingFrame, propertyName: string) => void;
+		CanvasViewDimensionsChanged?: (topLeftCorner: Vector2, bottomRightCorner: Vector2) => void;
 	};
 }
 
