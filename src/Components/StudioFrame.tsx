@@ -7,6 +7,7 @@ export class StudioFrame extends Roact.Component<IStudioFrameProperties, IStudio
 		Active: true,
 		AnchorPoint: new Vector2(0, 0),
 		BorderSizePixel: 1,
+		ClipsDescendants: false,
 		Position: new UDim2(0, 0, 0, 0),
 		Size: new UDim2(1, 0, 1, 0),
 		Visible: true,
@@ -23,6 +24,7 @@ export class StudioFrame extends Roact.Component<IStudioFrameProperties, IStudio
 				BorderColor3={theme.GetColor(Enum.StudioStyleGuideColor.Border)}
 				BorderMode={Enum.BorderMode.Inset}
 				BorderSizePixel={this.props.BorderSizePixel}
+				ClipsDescendants={this.props.ClipsDescendants}
 				LayoutOrder={this.props.LayoutOrder !== undefined ? this.props.LayoutOrder : 0}
 				Position={this.props.Position}
 				Rotation={this.props.Rotation !== undefined ? this.props.Rotation : 0}
