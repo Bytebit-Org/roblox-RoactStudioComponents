@@ -26,6 +26,7 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 	public constructor(props: IStudioTextBoxProperties) {
 		super(props);
 
+		// Ugly hack - should send in a PR to fix the typing on this method
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		this.setState({
 			CurrentText: this.props.Text,
