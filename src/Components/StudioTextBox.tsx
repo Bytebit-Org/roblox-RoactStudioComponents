@@ -26,12 +26,13 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 	public constructor(props: IStudioTextBoxProperties) {
 		super(props);
 
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		this.setState({
 			CurrentText: this.props.Text,
 			IsMouseOver: false,
 			IsPressed: false,
 			IsSelected: false,
-		});
+		} as IStudioTextBoxState);
 
 		if (props.Text !== undefined) {
 			this._PreviousValidValue = props.Text;
