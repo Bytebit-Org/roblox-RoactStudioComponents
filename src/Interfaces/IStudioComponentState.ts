@@ -1,7 +1,7 @@
 interface IStudioComponentState {
-    IsMouseOver: boolean,
-    IsSelected: boolean,
-    IsPressed: boolean
+	IsMouseOver: boolean;
+	IsPressed: boolean;
+	IsSelected: boolean;
 }
 
 export = IStudioComponentState;

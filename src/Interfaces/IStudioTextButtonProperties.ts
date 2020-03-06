@@ -1,16 +1,16 @@
-import IStudioComponentProperties = require("./IStudioComponentProperties");
+import IStudioComponentProperties from "./IStudioComponentProperties";
 
 interface IStudioTextButtonProperties extends IStudioComponentProperties {
-    AnchorPoint?: Vector2,
-    BackgroundColorEnum?: Enum.StudioStyleGuideColor,
-    BorderColorEnum?: Enum.StudioStyleGuideColor,
-    Events?: {
-        MouseButton1Click?: () => void
-    },
-    Position?: UDim2,
-    Text: string,
-    TextColorEnum?: Enum.StudioStyleGuideColor,
-    Width?: UDim,
+	AnchorPoint?: Vector2;
+	BackgroundColorEnum?: Enum.StudioStyleGuideColor;
+	BorderColorEnum?: Enum.StudioStyleGuideColor;
+	Events?: {
+		MouseButton1Click?: () => void;
+	};
+	Position?: UDim2;
+	Text: string;
+	TextColorEnum?: Enum.StudioStyleGuideColor;
+	Width?: UDim;
 }
 
 export = IStudioTextButtonProperties;

@@ -1,4 +1,4 @@
-import IStudioComponentState = require("./IStudioComponentState");
+import IStudioComponentState from "./IStudioComponentState";
 
 interface IStudioToggleState extends IStudioComponentState {
 	IsOn: boolean;

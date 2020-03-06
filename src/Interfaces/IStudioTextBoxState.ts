@@ -1,4 +1,4 @@
-import IStudioComponentState = require("./IStudioComponentState");
+import IStudioComponentState from "./IStudioComponentState";
 
 interface IStudioTextBoxState extends IStudioComponentState {
 	CurrentText: string;

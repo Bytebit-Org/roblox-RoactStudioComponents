@@ -1,10 +1,10 @@
-import IStudioComponentProperties = require("./IStudioComponentProperties");
+import IStudioComponentProperties from "./IStudioComponentProperties";
 
 interface IStudioToggleProperties extends IStudioComponentProperties {
 	IsOnByDefault: boolean;
-    Events?: {
-        Toggled?: (isOn: boolean) => void
-    };
+	Events?: {
+		Toggled?: (isOn: boolean) => void;
+	};
 }
 
 export = IStudioToggleProperties;
