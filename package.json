@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/roact-studio-components",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Meant for being used for plugin development.",
   "main": "out/init.lua",
   "types": "out/index.d.ts",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@rbxts/dumpster": "^1.0.8",
-    "@rbxts/roact": "^1.1.6",
+    "@rbxts/roact": "^1.2.0-beta.8",
     "@rbxts/services": "^1.0.28",
     "@rbxts/signals-tooling": "^1.0.2"
   },
