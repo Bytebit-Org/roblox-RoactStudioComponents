@@ -44,6 +44,32 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 	}
 
 	public didMount() {
+		const textBoxInstance = this._TextBoxRef.getValue();
+		if (textBoxInstance !== undefined) {
+			textBoxInstance.FocusLost.Connect((enterPressed, inputThatCausedFocusLoss) => {
+				if (this.props.Events !== undefined && this.props.Events.FocusLost !== undefined) {
+					this.props.Events.FocusLost(textBoxInstance, enterPressed, inputThatCausedFocusLoss);
+				}
+
+				if (this.props.InputValidationCallback !== undefined) {
+					const isCurrentInputValid = this.props.InputValidationCallback(textBoxInstance.Text);
+					if (isCurrentInputValid) {
+						this._PreviousValidValue = textBoxInstance.Text;
+					} else {
+						textBoxInstance.Text = this._PreviousValidValue !== undefined ? this._PreviousValidValue : "";
+					}
+				}
+
+				if (this.props.Events !== undefined && this.props.Events.ValueChanged !== undefined) {
+					this.props.Events.ValueChanged(textBoxInstance, textBoxInstance.Text);
+				}
+
+				this.setState({
+					CurrentText: textBoxInstance.Text,
+				});
+			});
+		}
+
 		this.performInstancingBehaviors();
 	}
 
@@ -113,32 +139,6 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 					Visible={this.props.Active}
 					// Roact symbols
 					Ref={this._TextBoxRef}
-					// Events
-					Event={{
-						FocusLost: (actualInstance, enterPressed, inputThatCausedFocusLoss) => {
-							if (this.props.Events !== undefined && this.props.Events.FocusLost !== undefined) {
-								this.props.Events.FocusLost(actualInstance, enterPressed, inputThatCausedFocusLoss);
-							}
-
-							if (this.props.InputValidationCallback !== undefined) {
-								const isCurrentInputValid = this.props.InputValidationCallback(actualInstance.Text);
-								if (isCurrentInputValid) {
-									this._PreviousValidValue = actualInstance.Text;
-								} else {
-									actualInstance.Text =
-										this._PreviousValidValue !== undefined ? this._PreviousValidValue : "";
-								}
-							}
-
-							if (this.props.Events !== undefined && this.props.Events.ValueChanged !== undefined) {
-								this.props.Events.ValueChanged(actualInstance, actualInstance.Text);
-							}
-
-							this.setState({
-								CurrentText: actualInstance.Text,
-							});
-						},
-					}}
 				/>
 				<textlabel
 					Key={"DisabledTextLabel"}
