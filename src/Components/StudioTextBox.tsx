@@ -22,9 +22,12 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 	};
 
 	private _PreviousValidValue?: string;
+	private _TextBoxRef: Roact.Ref<TextBox>;
 
 	public constructor(props: IStudioTextBoxProperties) {
 		super(props);
+
+		this._TextBoxRef = Roact.createRef();
 
 		// Ugly hack - should send in a PR to fix the typing on this method
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -38,6 +41,10 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 		if (props.Text !== undefined) {
 			this._PreviousValidValue = props.Text;
 		}
+	}
+
+	public didMount() {
+		this.performInstancingBehaviors();
 	}
 
 	public render(): Roact.Element {
@@ -104,9 +111,15 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 					TextXAlignment={this.props.TextXAlignment}
 					TextYAlignment={Enum.TextYAlignment.Center}
 					Visible={this.props.Active}
+					// Roact symbols
+					Ref={this._TextBoxRef}
 					// Events
 					Event={{
-						FocusLost: actualInstance => {
+						FocusLost: (actualInstance, enterPressed, inputThatCausedFocusLoss) => {
+							if (this.props.Events !== undefined && this.props.Events.FocusLost !== undefined) {
+								this.props.Events.FocusLost(actualInstance, enterPressed, inputThatCausedFocusLoss);
+							}
+
 							if (this.props.InputValidationCallback !== undefined) {
 								const isCurrentInputValid = this.props.InputValidationCallback(actualInstance.Text);
 								if (isCurrentInputValid) {
@@ -152,5 +165,18 @@ export class StudioTextBox extends Roact.Component<IStudioTextBoxProperties, ISt
 				/>
 			</frame>
 		);
+	}
+
+	public didUpdate() {
+		this.performInstancingBehaviors();
+	}
+
+	private performInstancingBehaviors() {
+		if (this.props.ShouldCaptureFocus) {
+			const textBoxInstance = this._TextBoxRef.getValue();
+			if (textBoxInstance !== undefined) {
+				textBoxInstance.CaptureFocus();
+			}
+		}
 	}
 }
