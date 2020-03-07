@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/types/plugin" />
 
-import Roact from "@rbxts/roact";
+import Roact, { Ref } from "@rbxts/roact";
 import IStudioScrollingFrameProperties from "../../Interfaces/IStudioScrollingFrameProperties";
 import IStudioScrollingFrameState from "Interfaces/IStudioScrollingFrameState";
 import { Constants } from "Data/Constants";
@@ -27,8 +27,12 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 		Visible: true,
 	};
 
+	private frameWindowRef: Roact.Ref<Frame>;
+
 	public constructor(props: IStudioScrollingFrameProperties) {
 		super(props);
+
+		this.frameWindowRef = Roact.createRef();
 
 		this.setState({
 			AbsoluteWindowSize: new Vector2(1, 1),
@@ -50,6 +54,19 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 				CurrentCanvasPosition: nextProps.CanvasPosition,
 			};
 		}
+	}
+
+	public didMount() {
+		const frameWindowInstance = this.frameWindowRef.getValue();
+		if (frameWindowInstance === undefined) {
+			return;
+		}
+
+		frameWindowInstance.GetPropertyChangedSignal("AbsoluteSize").Connect(() => {
+			this.setState({
+				AbsoluteWindowSize: frameWindowInstance.AbsoluteSize,
+			});
+		});
 	}
 
 	public didUpdate(previousProps: IStudioScrollingFrameProperties, previousState: IStudioScrollingFrameState) {
@@ -221,13 +238,7 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 					ClipsDescendants={true}
 					Position={new UDim2(0, 0, 0, 0)}
 					Size={windowSize}
-					Ref={instance => {
-						instance.GetPropertyChangedSignal("AbsoluteSize").Connect(() => {
-							this.setState({
-								AbsoluteWindowSize: instance.AbsoluteSize,
-							});
-						});
-					}}
+					Ref={this.frameWindowRef}
 				>
 					<frame
 						Key={`ScrollingFrameCanvas`}
