@@ -15,6 +15,7 @@ export class StudioTextLabel extends Roact.Component<IStudioTextLabelProperties,
 		Rotation: 0,
 		Text: "",
 		TextColorEnum: Enum.StudioStyleGuideColor.MainText,
+		TextTruncate: Enum.TextTruncate.None,
 		TextXAlignment: Enum.TextXAlignment.Center,
 		Width: new UDim(1, 0),
 		Visible: true,
@@ -45,6 +46,7 @@ export class StudioTextLabel extends Roact.Component<IStudioTextLabelProperties,
 				Text={props.Text}
 				TextColor3={theme.GetColor(props.TextColorEnum, styleGuideModifier)}
 				TextSize={16}
+				TextTruncate={props.TextTruncate}
 				TextXAlignment={props.TextXAlignment}
 				TextYAlignment={Enum.TextYAlignment.Center}
 				Visible={props.Visible}

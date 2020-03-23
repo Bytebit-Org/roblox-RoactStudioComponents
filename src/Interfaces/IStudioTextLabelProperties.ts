@@ -5,6 +5,7 @@ interface IStudioTextLabelProperties extends IStudioComponentProperties {
 	Position?: UDim2;
 	Text?: string;
 	TextColorEnum?: Enum.StudioStyleGuideColor;
+	TextTruncate?: Enum.TextTruncate;
 	TextXAlignment?: Enum.TextXAlignment;
 	Width?: UDim;
 	Events?: {
