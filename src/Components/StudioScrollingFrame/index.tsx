@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/types/plugin" />
 
-import Roact, { Ref } from "@rbxts/roact";
+import Roact from "@rbxts/roact";
 import IStudioScrollingFrameProperties from "../../Interfaces/IStudioScrollingFrameProperties";
 import IStudioScrollingFrameState from "Interfaces/IStudioScrollingFrameState";
 import { Constants } from "Data/Constants";
@@ -38,22 +38,6 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 			AbsoluteWindowSize: new Vector2(1, 1),
 			CurrentCanvasPosition: props.CanvasPosition || new Vector2(),
 		});
-	}
-
-	public getDerivedStateFromProps(
-		this: void,
-		nextProps: IStudioScrollingFrameProperties,
-		previousState: IStudioScrollingFrameState,
-	) {
-		if (
-			nextProps.CanvasPosition !== undefined &&
-			previousState.CurrentCanvasPosition !== undefined &&
-			vector2FuzzyEquals(nextProps.CanvasPosition, previousState.CurrentCanvasPosition)
-		) {
-			return {
-				CurrentCanvasPosition: nextProps.CanvasPosition,
-			};
-		}
 	}
 
 	public didMount() {
@@ -252,6 +236,33 @@ export class StudioScrollingFrame extends Roact.Component<IStudioScrollingFrameP
 				{scrollBars}
 			</frame>
 		);
+	}
+
+	public willUpdate(nextProps: IStudioScrollingFrameProperties, nextState: IStudioScrollingFrameState) {
+		if (nextState.CurrentCanvasPosition !== undefined) {
+			let newCanvasPosition = nextState.CurrentCanvasPosition;
+
+			if (nextProps.CanvasSize !== undefined && nextState.AbsoluteWindowSize !== undefined) {
+				const newAbsoluteCanvasSize = new Vector2(
+					nextProps.CanvasSize.X.Scale * nextState.AbsoluteWindowSize.X + nextProps.CanvasSize.X.Offset,
+					nextProps.CanvasSize.Y.Scale * nextState.AbsoluteWindowSize.Y + nextProps.CanvasSize.Y.Offset,
+				);
+
+				if (newCanvasPosition.X < 0) {
+					newCanvasPosition = new Vector2(0, newCanvasPosition.Y);
+				} else if (newAbsoluteCanvasSize.X <= nextState.AbsoluteWindowSize.X) {
+					newCanvasPosition = new Vector2(0, newCanvasPosition.Y);
+				}
+
+				if (newCanvasPosition.Y < 0) {
+					newCanvasPosition = new Vector2(newCanvasPosition.X, 0);
+				} else if (newAbsoluteCanvasSize.Y <= nextState.AbsoluteWindowSize.Y) {
+					newCanvasPosition = new Vector2(newCanvasPosition.X, 0);
+				}
+			}
+
+			nextState.CurrentCanvasPosition = newCanvasPosition;
+		}
 	}
 
 	private computeAbsoluteCanvasSize() {
