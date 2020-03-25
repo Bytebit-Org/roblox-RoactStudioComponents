@@ -41,7 +41,6 @@ export class StudioScrollBarButton extends Roact.Component<
 				BorderColor3={theme.GetColor(Enum.StudioStyleGuideColor.Border, styleGuideModifier)}
 				BorderMode={Enum.BorderMode.Inset}
 				BorderSizePixel={1}
-				ImageColor3={theme.GetColor(Enum.StudioStyleGuideColor.ButtonText, styleGuideModifier)}
 				ImageTransparency={1}
 				Position={this.props.Position}
 				Size={new UDim2(0, Constants.ScrollBar.ThicknessInPixels, 0, Constants.ScrollBar.ThicknessInPixels)}
@@ -69,6 +68,7 @@ export class StudioScrollBarButton extends Roact.Component<
 					AnchorPoint={new Vector2(0.5, 0.5)}
 					BackgroundTransparency={1}
 					Image={StudioComponentSprites.image}
+					ImageColor3={theme.GetColor(Enum.StudioStyleGuideColor.ButtonText, styleGuideModifier)}
 					ImageRectOffset={StudioComponentSprites.sprites.triangle.offset}
 					ImageRectSize={StudioComponentSprites.sprites.triangle.size}
 					Position={new UDim2(0.5, 0, 0.5, 0)}
