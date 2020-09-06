@@ -6,3 +6,4 @@ export * from "./Components/StudioTextBox";
 export * from "./Components/StudioTextButton";
 export * from "./Components/StudioTextLabel";
 export * from "./Components/StudioToggle";
+export { DeriveColorModifier } from "./Common/StudioComponentUtilities";

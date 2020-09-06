@@ -1,11 +1,11 @@
 {
   "name": "@rbxts/roact-studio-components",
-  "version": "0.0.20",
+  "version": "0.0.22.togglablesection.5",
   "description": "Meant for being used for plugin development.",
   "main": "out/init.lua",
   "types": "out/index.d.ts",
   "scripts": {
-    "prepublishOnly": "rbxtsc"
+    "prepublishOnly": "rbxtsc-dev --type=package"
   },
   "repository": {
     "type": "git",

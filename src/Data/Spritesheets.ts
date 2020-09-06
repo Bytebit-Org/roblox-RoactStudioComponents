@@ -21,7 +21,7 @@ export const StudioComponentSprites = {
 			offset: new Vector2(69, 16),
 			size: new Vector2(27, 16),
 		},
-		triangle: {
+		triangle10x10: {
 			offset: new Vector2(0, 0),
 			size: new Vector2(10, 10),
 		},
