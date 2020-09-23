@@ -1,4 +1,13 @@
+# Macs
+.DS_STORE
+
+# Roblox dev
 include/
 node_modules/
 out/
-.DS_Store
+*.publish.config
+*.rbxl
+*.rbxl.lock
+*.rbxlx
+*.rbxlx.lock
+*.tsbuildinfo

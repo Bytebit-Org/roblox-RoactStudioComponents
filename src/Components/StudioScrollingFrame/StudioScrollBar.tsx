@@ -5,11 +5,12 @@ import { Dumpster } from "@rbxts/dumpster";
 import { RunService } from "@rbxts/services";
 
 interface IStudioScrollBarProperties {
-	GripLengthPercentage: number;
-	GripTrackPositionPercentage: number;
-	Length: UDim;
+	GripLengthPercentage: Roact.RoactBinding<number>;
+	GripTrackPositionPercentage: Roact.RoactBinding<number>;
+	Length: Roact.RoactBinding<UDim>;
 	ScrollDirection: Enum.ScrollingDirection.X | Enum.ScrollingDirection.Y;
 	Position: UDim2;
+	Visible: Roact.RoactBinding<boolean>;
 
 	ScrollButtonPressed: (direction: number) => void;
 	ScollGripDragged: (trackLengthPercentageTraveled: number) => void;
@@ -42,9 +43,11 @@ export class StudioScrollBar extends Roact.Component<IStudioScrollBarProperties,
 
 		const isVerticalScrollBar = this.props.ScrollDirection === Enum.ScrollingDirection.Y;
 
-		const size = isVerticalScrollBar
-			? new UDim2(new UDim(0, Constants.ScrollBar.ThicknessInPixels), this.props.Length)
-			: new UDim2(this.props.Length, new UDim(0, Constants.ScrollBar.ThicknessInPixels));
+		const size = this.props.Length.map(length =>
+			isVerticalScrollBar
+				? new UDim2(new UDim(0, Constants.ScrollBar.ThicknessInPixels), length)
+				: new UDim2(length, new UDim(0, Constants.ScrollBar.ThicknessInPixels)),
+		);
 
 		const trackPosition = isVerticalScrollBar
 			? new UDim2(0, 0, 0, Constants.ScrollBar.ThicknessInPixels - 1)
@@ -53,12 +56,14 @@ export class StudioScrollBar extends Roact.Component<IStudioScrollBarProperties,
 			? new UDim2(1, 0, 1, 2 - 2 * Constants.ScrollBar.ThicknessInPixels)
 			: new UDim2(1, 2 - 2 * Constants.ScrollBar.ThicknessInPixels, 1, 0);
 
-		const gripPosition = isVerticalScrollBar
-			? new UDim2(0, -1, this.props.GripTrackPositionPercentage, -1)
-			: new UDim2(this.props.GripTrackPositionPercentage, -1, 0, -1);
-		const gripSize = isVerticalScrollBar
-			? new UDim2(1, 2, this.props.GripLengthPercentage, 2)
-			: new UDim2(this.props.GripLengthPercentage, 2, 1, 2);
+		const gripPosition = this.props.GripTrackPositionPercentage.map(gripTrackPositionPercentage =>
+			isVerticalScrollBar
+				? new UDim2(0, -1, gripTrackPositionPercentage, -1)
+				: new UDim2(gripTrackPositionPercentage, -1, 0, -1),
+		);
+		const gripSize = this.props.GripLengthPercentage.map(gripLengthPercentage =>
+			isVerticalScrollBar ? new UDim2(1, 2, gripLengthPercentage, 2) : new UDim2(gripLengthPercentage, 2, 1, 2),
+		);
 		const gripStyleGuideModifier = this.state.IsGripBeingDragged
 			? Enum.StudioStyleGuideModifier.Pressed
 			: Enum.StudioStyleGuideModifier.Default;
@@ -69,7 +74,13 @@ export class StudioScrollBar extends Roact.Component<IStudioScrollBarProperties,
 		const incrementButtonPosition = isVerticalScrollBar ? new UDim2(0, 0, 1, 0) : new UDim2(1, 0, 0, 0);
 
 		return (
-			<frame BackgroundTransparency={1} BorderSizePixel={0} Position={this.props.Position} Size={size}>
+			<frame
+				BackgroundTransparency={1}
+				BorderSizePixel={0}
+				Position={this.props.Position}
+				Size={size}
+				Visible={this.props.Visible}
+			>
 				<StudioScrollBarButton
 					Key={`DecrementButton`}
 					AnchorPoint={new Vector2(0, 0)}
@@ -195,16 +206,17 @@ export class StudioScrollBar extends Roact.Component<IStudioScrollBarProperties,
 		const mouseTrackPositionPercentage = relevantMousePositionOffsetInPixels / relevantTrackLengthInPixels;
 
 		const isMouseInBoundsOfGrip =
-			mouseTrackPositionPercentage >= this.props.GripTrackPositionPercentage &&
-			mouseTrackPositionPercentage <= this.props.GripTrackPositionPercentage + this.props.GripLengthPercentage;
+			mouseTrackPositionPercentage >= this.props.GripTrackPositionPercentage.getValue() &&
+			mouseTrackPositionPercentage <=
+				this.props.GripTrackPositionPercentage.getValue() + this.props.GripLengthPercentage.getValue();
 		if (isMouseInBoundsOfGrip) {
 			return;
 		}
 
 		const goalGripTrackPositionPercentage = math.clamp(
-			mouseTrackPositionPercentage - this.props.GripLengthPercentage / 2,
+			mouseTrackPositionPercentage - this.props.GripLengthPercentage.getValue() / 2,
 			0,
-			1 - this.props.GripLengthPercentage,
+			1 - this.props.GripLengthPercentage.getValue(),
 		);
 
 		const didFirstMoveReachTheGoal = this.moveTowardsTrackPressGoal(goalGripTrackPositionPercentage);
@@ -231,15 +243,16 @@ export class StudioScrollBar extends Roact.Component<IStudioScrollBarProperties,
 	}
 
 	private moveTowardsTrackPressGoal(goalGripTrackPositionPercentage: number): boolean {
-		const displacementFromGoal = goalGripTrackPositionPercentage - this.props.GripTrackPositionPercentage;
+		const displacementFromGoal =
+			goalGripTrackPositionPercentage - this.props.GripTrackPositionPercentage.getValue();
 
-		if (math.abs(displacementFromGoal) <= this.props.GripLengthPercentage) {
+		if (math.abs(displacementFromGoal) <= this.props.GripLengthPercentage.getValue()) {
 			this.props.ScollGripDragged(displacementFromGoal);
 			return true;
 		}
 
 		const directionToGoal = math.sign(displacementFromGoal);
-		this.props.ScollGripDragged(directionToGoal * this.props.GripLengthPercentage);
+		this.props.ScollGripDragged(directionToGoal * this.props.GripLengthPercentage.getValue());
 
 		return false;
 	}

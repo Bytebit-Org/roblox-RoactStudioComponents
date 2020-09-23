@@ -7,6 +7,7 @@ interface IStudioTextButtonProperties extends IStudioComponentProperties {
 	Events?: {
 		MouseButton1Click?: () => void;
 	};
+	ForcedTextColorStyleGuideModifier?: Enum.StudioStyleGuideModifier;
 	Position?: UDim2;
 	Text: string;
 	TextColorEnum?: Enum.StudioStyleGuideColor;

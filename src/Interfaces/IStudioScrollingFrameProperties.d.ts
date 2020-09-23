@@ -8,7 +8,7 @@ interface IStudioScrollingFrameProperties extends IStudioComponentProperties {
 	BorderMode?: Enum.BorderMode;
 	BorderSizePixel?: number;
 	CanvasPosition?: Vector2;
-	CanvasSize?: UDim2;
+	CanvasSize?: UDim2 | Roact.RoactBinding<UDim2>;
 	HorizontalScrollBarInset?: Enum.ScrollBarInset;
 	HorizontalScrollStepSizeInPixels?: number;
 	Position?: UDim2;

@@ -50,7 +50,10 @@ export class StudioTextButton extends Roact.Component<IStudioTextButtonPropertie
 				Rotation={props.Rotation}
 				Size={new UDim2(props.Width, StudioTextButton.HeightUDim)}
 				Text={props.Text}
-				TextColor3={theme.GetColor(props.TextColorEnum, styleGuideModifier)}
+				TextColor3={theme.GetColor(
+					props.TextColorEnum,
+					props.ForcedTextColorStyleGuideModifier ?? styleGuideModifier,
+				)}
 				TextSize={16}
 				TextXAlignment={Enum.TextXAlignment.Center}
 				TextYAlignment={Enum.TextYAlignment.Center}

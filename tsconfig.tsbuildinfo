@@ -6,7 +6,7 @@
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/roact/index.d.ts": {
-        "version": "d08051b9eeb7f9319ec692653cee983cc2633f8e842717e0bda65c9fb62041fd",
+        "version": "42b2d8d97dd77459bba0ec242442deb07d2caf1249c6e38528adaf7437659730",
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/signals-tooling/out/types.d.ts": {
@@ -34,27 +34,27 @@
         "affectsGlobalScope": false
       },
       "./node_modules/@rbxts/types/include/es.d.ts": {
-        "version": "5a1c17f7ce40ec149e3f074f96a64efa357e431033fefaff31cc47477c22cb0e",
+        "version": "1bddc9b7801371166dfabf2f2acb87f2d00f30a7131b2f5c0e5ed669cd9758cd",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@rbxts/types/include/generated/enums.d.ts": {
+        "version": "31ddf018fcf880060ad73d660a1361b2495d5a3b665a30ac296c41c243b564ba",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@rbxts/types/include/generated/none.d.ts": {
+        "version": "fcc7ea31344278b97bbf99eb47f717162ba7a66ca907568a82d0bc30c3205194",
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/types/include/lua.d.ts": {
-        "version": "d30d9dc12e9c2e39407adf75d67566335663a9d1a81687b189241153cca15b8c",
+        "version": "90786e897617bb2987bf536cfac4a1870b4e1e4ecb04fded5767cb3131bb7de8",
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/types/include/macro_math.d.ts": {
         "version": "2e07be36a234792413bf15353eb810994b9d83356dc41829430ec613c252d17a",
         "affectsGlobalScope": true
       },
-      "./node_modules/@rbxts/types/include/generated/enums.d.ts": {
-        "version": "2cde91954f8cd5ffe5fac05ab9480fd804a7e6bd0bd4477fc261d57c8948f438",
-        "affectsGlobalScope": true
-      },
-      "./node_modules/@rbxts/types/include/generated/none.d.ts": {
-        "version": "0b316a702b6c051f5b230c67e74589989fad9bf951d5fd1aa045bbc0ec3978d8",
-        "affectsGlobalScope": true
-      },
       "./node_modules/@rbxts/types/include/roblox.d.ts": {
-        "version": "d3b27428232c7fead7508043b4d042507235f32d6fca6aefdc788f1c0b7794b2",
+        "version": "344d6eef0348e0adaae2714ed88011c1f881be48b3f79be166932990411f8726",
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/signals-tooling/out/implementation/signal.d.ts": {
@@ -81,15 +81,15 @@
         "version": "ce2e7061b5b182c157c79039253745a40e24eaa7921d1031f257c9b4c5479143",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiocomponentproperties.ts": {
+      "./src/interfaces/istudiocomponentproperties.d.ts": {
         "version": "cf5c564a6818164cea618d08a12f5049a74ee0e25291da660a65d510d972a790",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudioframeproperties.ts": {
+      "./src/interfaces/istudioframeproperties.d.ts": {
         "version": "12339b04d2aea71a1a29a11c1a164715904c8acf73ffecca31e6c8b30d05ca13",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiocomponentstate.ts": {
+      "./src/interfaces/istudiocomponentstate.d.ts": {
         "version": "7e26f60a07d5235b63546a651627ad745b239574f60082ee6bdd3e1736b796a5",
         "affectsGlobalScope": false
       },
@@ -98,7 +98,7 @@
         "affectsGlobalScope": false
       },
       "./node_modules/@rbxts/types/include/generated/pluginsecurity.d.ts": {
-        "version": "3bad5861fea28705334ff712ecdcc8129a4bc12af2623ad30c083688062e575f",
+        "version": "cdaf2349829b0a027b83148d19518571db77fecfe716d5a165a96baeab6dfeca",
         "affectsGlobalScope": true
       },
       "./node_modules/@rbxts/types/plugin.d.ts": {
@@ -109,7 +109,7 @@
         "version": "543e8840f5c7e1351fc0d771ad82409e12429ac9e9012cbba7be30fd0c9c3c88",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudioimagebuttonproperties.ts": {
+      "./src/interfaces/istudioimagebuttonproperties.d.ts": {
         "version": "d377b1945c6593fe13d6433d5aaa5539ffc7c756a5c21f46180639a252d5a549",
         "affectsGlobalScope": false
       },
@@ -117,12 +117,8 @@
         "version": "9da9f508d69da35e0a7092eaa26949f86772e54b66d21ee177339e370d1ffddc",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudioscrollingframeproperties.ts": {
-        "version": "8c07e7282eeac92d573e5765d65debeb5441729eda8c5892534e39524de6ddad",
-        "affectsGlobalScope": false
-      },
-      "./src/interfaces/istudioscrollingframestate.ts": {
-        "version": "d58e2b5ae0c938cae85de3c30c1288b4c4588cb4a1b438dfe0d261939c5ad2d3",
+      "./src/interfaces/istudioscrollingframeproperties.d.ts": {
+        "version": "a8de18b0e37ee4294de11558f2c859cf0ce8713fb499f670aebb1435a0c60bb0",
         "affectsGlobalScope": false
       },
       "./src/data/constants.ts": {
@@ -142,22 +138,18 @@
         "affectsGlobalScope": false
       },
       "./src/components/studioscrollingframe/studioscrollbar.tsx": {
-        "version": "49f8fef3bed5323154564da66d248d8bb28e86ea0de921ea0253935bbd0f4d12",
-        "affectsGlobalScope": false
-      },
-      "./src/common/vector2fuzzyequals.ts": {
-        "version": "80c1c3d59247800e116769e6972407137bc045ae344a387ad3ee90f8dd6794a7",
+        "version": "67fd3d9abfb4b2e379bddcde1f0906b60e4fe70c5525f4289f6807e5ea42e4e9",
         "affectsGlobalScope": false
       },
       "./src/components/studioscrollingframe/index.tsx": {
-        "version": "5e4b312ace96c17e68519613ac11513386f01f749452ecbce063da57a8c68d4b",
+        "version": "0134353d76df753e482f03b0730bcf65d90e8b07399f544abd41a4b949d7d7d2",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotextboxproperties.ts": {
+      "./src/interfaces/istudiotextboxproperties.d.ts": {
         "version": "81e24401de6fb0788a6283d88916c7d401c9a2c5108c3512bb2a07a0aaaed612",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotextboxstate.ts": {
+      "./src/interfaces/istudiotextboxstate.d.ts": {
         "version": "b0c87b2ac0835fbad793f00df6cba17ef8ff4e314c6423616b3779c02eefbefe",
         "affectsGlobalScope": false
       },
@@ -165,15 +157,15 @@
         "version": "a1b65b16e9d6e6c89f1d39a14fc0239432d4a83dfab99db612dc50cadee43297",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotextbuttonproperties.ts": {
-        "version": "0b97b4e1410d032e5483c97219e83a667eb44ee5c22d4b43bfc9c940a2b4ef1f",
+      "./src/interfaces/istudiotextbuttonproperties.d.ts": {
+        "version": "2b966fa868454ad3b46b60c6d8b2d935b285d01b8233fef6ef6b1f29214251b8",
         "affectsGlobalScope": false
       },
       "./src/components/studiotextbutton.tsx": {
-        "version": "3a659991680920365ae48d8b695ba55dfa581cd8c76b2a9ba9abbc2b24c1db94",
+        "version": "70fc0c01f1281fd1ccbd6c0cf5d0f33e8e17eefe942dfc38910076372a002071",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotextlabelproperties.ts": {
+      "./src/interfaces/istudiotextlabelproperties.d.ts": {
         "version": "d82372166c3430345b22da83139b30840220a70cbd9bf1e73eeb6bb63aa471b3",
         "affectsGlobalScope": false
       },
@@ -181,11 +173,11 @@
         "version": "a1959364b11a1e91c2ffc6f45e6a4bf2bb2e0ed21200dc5dfac729a45dabfa28",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotoggleproperties.ts": {
+      "./src/interfaces/istudiotoggleproperties.d.ts": {
         "version": "81c71e0aa70f05df78545e11d05103a55e6119f2a2628a7e6971942337cc98d2",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotogglestate.ts": {
+      "./src/interfaces/istudiotogglestate.d.ts": {
         "version": "b181a85bfa97ee6ea8f7ceebcedaa6ae8e7f89e3d1ca0dc7fe9a77bb7900cb91",
         "affectsGlobalScope": false
       },
@@ -197,15 +189,19 @@
         "version": "3ebd56cd13a52c7872f95c941e20dbc1cefa2fce6386d476fad36bba21e9c0a5",
         "affectsGlobalScope": false
       },
+      "./src/common/vector2fuzzyequals.ts": {
+        "version": "80c1c3d59247800e116769e6972407137bc045ae344a387ad3ee90f8dd6794a7",
+        "affectsGlobalScope": false
+      },
       "./src/components/studiotogglablesection/studiotogglablesectionheader.tsx": {
         "version": "bcdcc6651978808fa108fcb73f524980d71f6ce45ad5c5c6d479bf14f144016e",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotogglablesectionproperties.ts": {
+      "./src/interfaces/istudiotogglablesectionproperties.d.ts": {
         "version": "c506a01f5e78a1df1de4a73e329012689308f47d98f6041841a337a63c549736",
         "affectsGlobalScope": false
       },
-      "./src/interfaces/istudiotogglablesectionstate.ts": {
+      "./src/interfaces/istudiotogglablesectionstate.d.ts": {
         "version": "3a103b98a42e45b7aaa6326acfdcffef1a9d6351afa038fd4b114ca99c9c57c2",
         "affectsGlobalScope": false
       },
@@ -293,6 +289,10 @@
       "./node_modules/@rbxts/types/include/generated/pluginsecurity.d.ts": [
         "./node_modules/@rbxts/types/include/generated/none.d.ts"
       ],
+      "./node_modules/@rbxts/types/include/lua.d.ts": [
+        "./node_modules/@rbxts/types/include/es.d.ts",
+        "./node_modules/@rbxts/types/include/generated/none.d.ts"
+      ],
       "./node_modules/@rbxts/types/include/roblox.d.ts": [
         "./node_modules/@rbxts/types/include/es.d.ts",
         "./node_modules/@rbxts/types/include/generated/enums.d.ts",
@@ -304,8 +304,8 @@
         "./node_modules/@rbxts/types/include/generated/pluginsecurity.d.ts"
       ],
       "./src/common/studiocomponentutilities.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts",
-        "./src/interfaces/istudiocomponentstate.ts"
+        "./src/interfaces/istudiocomponentproperties.d.ts",
+        "./src/interfaces/istudiocomponentstate.d.ts"
       ],
       "./src/components/studiodialogframe.ts": [
         "./node_modules/@rbxts/roact/index.d.ts",
@@ -314,24 +314,23 @@
       ],
       "./src/components/studioframe.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
-        "./src/interfaces/istudiocomponentstate.ts",
-        "./src/interfaces/istudioframeproperties.ts"
+        "./src/interfaces/istudiocomponentstate.d.ts",
+        "./src/interfaces/istudioframeproperties.d.ts"
       ],
       "./src/components/studioimagebutton.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
         "./src/common/studiocomponentutilities.ts",
-        "./src/interfaces/istudiocomponentstate.ts",
-        "./src/interfaces/istudioimagebuttonproperties.ts"
+        "./src/interfaces/istudiocomponentstate.d.ts",
+        "./src/interfaces/istudioimagebuttonproperties.d.ts"
       ],
       "./src/components/studioscrollingframe/index.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
-        "./src/common/vector2fuzzyequals.ts",
         "./src/components/studioscrollingframe/studioscrollbar.tsx",
         "./src/data/constants.ts",
-        "./src/interfaces/istudioscrollingframeproperties.ts",
-        "./src/interfaces/istudioscrollingframestate.ts"
+        "./src/interfaces/istudiocomponentstate.d.ts",
+        "./src/interfaces/istudioscrollingframeproperties.d.ts"
       ],
       "./src/components/studioscrollingframe/studioscrollbar.tsx": [
         "./node_modules/@rbxts/dumpster/dumpster.d.ts",
@@ -349,28 +348,28 @@
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
         "./src/common/studiocomponentutilities.ts",
-        "./src/interfaces/istudiotextboxproperties.ts",
-        "./src/interfaces/istudiotextboxstate.ts"
+        "./src/interfaces/istudiotextboxproperties.d.ts",
+        "./src/interfaces/istudiotextboxstate.d.ts"
       ],
       "./src/components/studiotextbutton.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
         "./src/common/studiocomponentutilities.ts",
-        "./src/interfaces/istudiocomponentstate.ts",
-        "./src/interfaces/istudiotextbuttonproperties.ts"
+        "./src/interfaces/istudiocomponentstate.d.ts",
+        "./src/interfaces/istudiotextbuttonproperties.d.ts"
       ],
       "./src/components/studiotextlabel.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
         "./src/common/studiocomponentutilities.ts",
-        "./src/interfaces/istudiocomponentstate.ts",
-        "./src/interfaces/istudiotextlabelproperties.ts"
+        "./src/interfaces/istudiocomponentstate.d.ts",
+        "./src/interfaces/istudiotextlabelproperties.d.ts"
       ],
       "./src/components/studiotogglablesection/index.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
         "./src/components/studiotogglablesection/studiotogglablesectionheader.tsx",
-        "./src/interfaces/istudiotogglablesectionproperties.ts",
-        "./src/interfaces/istudiotogglablesectionstate.ts"
+        "./src/interfaces/istudiotogglablesectionproperties.d.ts",
+        "./src/interfaces/istudiotogglablesectionstate.d.ts"
       ],
       "./src/components/studiotogglablesection/studiotogglablesectionheader.tsx": [
         "./node_modules/@rbxts/roact/index.d.ts",
@@ -380,8 +379,8 @@
         "./node_modules/@rbxts/roact/index.d.ts",
         "./node_modules/@rbxts/types/plugin.d.ts",
         "./src/data/spritesheets.ts",
-        "./src/interfaces/istudiotoggleproperties.ts",
-        "./src/interfaces/istudiotogglestate.ts"
+        "./src/interfaces/istudiotoggleproperties.d.ts",
+        "./src/interfaces/istudiotogglestate.d.ts"
       ],
       "./src/index.ts": [
         "./src/common/studiocomponentutilities.ts",
@@ -394,44 +393,41 @@
         "./src/components/studiotextlabel.tsx",
         "./src/components/studiotoggle.tsx"
       ],
-      "./src/interfaces/istudioframeproperties.ts": [
+      "./src/interfaces/istudioframeproperties.d.ts": [
         "./node_modules/@rbxts/roact/index.d.ts",
-        "./src/interfaces/istudiocomponentproperties.ts"
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudioimagebuttonproperties.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts"
+      "./src/interfaces/istudioimagebuttonproperties.d.ts": [
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudioscrollingframeproperties.ts": [
+      "./src/interfaces/istudioscrollingframeproperties.d.ts": [
         "./node_modules/@rbxts/roact/index.d.ts",
-        "./src/interfaces/istudiocomponentproperties.ts"
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudioscrollingframestate.ts": [
-        "./src/interfaces/istudiocomponentstate.ts"
+      "./src/interfaces/istudiotextboxproperties.d.ts": [
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudiotextboxproperties.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts"
+      "./src/interfaces/istudiotextboxstate.d.ts": [
+        "./src/interfaces/istudiocomponentstate.d.ts"
       ],
-      "./src/interfaces/istudiotextboxstate.ts": [
-        "./src/interfaces/istudiocomponentstate.ts"
+      "./src/interfaces/istudiotextbuttonproperties.d.ts": [
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudiotextbuttonproperties.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts"
+      "./src/interfaces/istudiotextlabelproperties.d.ts": [
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudiotextlabelproperties.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts"
-      ],
-      "./src/interfaces/istudiotogglablesectionproperties.ts": [
+      "./src/interfaces/istudiotogglablesectionproperties.d.ts": [
         "./node_modules/@rbxts/roact/index.d.ts",
-        "./src/interfaces/istudiocomponentproperties.ts"
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudiotogglablesectionstate.ts": [
-        "./src/interfaces/istudiocomponentstate.ts"
+      "./src/interfaces/istudiotogglablesectionstate.d.ts": [
+        "./src/interfaces/istudiocomponentstate.d.ts"
       ],
-      "./src/interfaces/istudiotoggleproperties.ts": [
-        "./src/interfaces/istudiocomponentproperties.ts"
+      "./src/interfaces/istudiotoggleproperties.d.ts": [
+        "./src/interfaces/istudiocomponentproperties.d.ts"
       ],
-      "./src/interfaces/istudiotogglestate.ts": [
-        "./src/interfaces/istudiocomponentstate.ts"
+      "./src/interfaces/istudiotogglestate.d.ts": [
+        "./src/interfaces/istudiocomponentstate.d.ts"
       ]
     },
     "exportedModulesMap": {},
