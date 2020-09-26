@@ -6,20 +6,20 @@ export const StudioComponentSprites = {
 			size: new Vector2(32, 32),
 		},
 		toggleOffLight: {
-			offset: new Vector2(42, 0),
-			size: new Vector2(27, 16),
+			offset: new Vector2(37, 0),
+			size: new Vector2(25, 16),
 		},
 		toggleOnLight: {
-			offset: new Vector2(69, 0),
-			size: new Vector2(27, 16),
+			offset: new Vector2(63, 0),
+			size: new Vector2(25, 16),
 		},
 		toggleOffDark: {
-			offset: new Vector2(42, 16),
-			size: new Vector2(27, 16),
+			offset: new Vector2(37, 16),
+			size: new Vector2(25, 16),
 		},
 		toggleOnDark: {
-			offset: new Vector2(69, 16),
-			size: new Vector2(27, 16),
+			offset: new Vector2(63, 16),
+			size: new Vector2(25, 16),
 		},
 		triangle10x10: {
 			offset: new Vector2(0, 0),
