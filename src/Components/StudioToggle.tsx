@@ -5,7 +5,7 @@ import IStudioToggleProperties from "../Interfaces/IStudioToggleProperties";
 import IStudioToggleState from "../Interfaces/IStudioToggleState";
 import { StudioComponentSprites } from "Data/Spritesheets";
 
-const _SIZE = new UDim2(0, 27, 0, 16);
+const _SIZE = new UDim2(0, 25, 0, 16);
 
 export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStudioToggleState> {
 	public constructor(props: IStudioToggleProperties) {
