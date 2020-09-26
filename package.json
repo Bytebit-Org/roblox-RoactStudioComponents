@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/roact-studio-components",
-  "version": "0.0.22.togglablesection.21",
+  "version": "0.0.22.togglablesection.22",
   "description": "Meant for being used for plugin development.",
   "main": "out/init.lua",
   "types": "out/index.d.ts",
