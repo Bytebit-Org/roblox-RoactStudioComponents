@@ -28,6 +28,7 @@ export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStud
 			<imagebutton
 				Key={"Toggle"}
 				Active={this.props.Active !== undefined ? this.props.Active : true}
+				AnchorPoint={this.props.AnchorPoint}
 				AutoButtonColor={false}
 				BackgroundTransparency={1}
 				BorderSizePixel={0}
@@ -35,6 +36,7 @@ export class StudioToggle extends Roact.Component<IStudioToggleProperties, IStud
 				Image={StudioComponentSprites.image}
 				ImageRectOffset={spriteRegion.offset}
 				ImageRectSize={spriteRegion.size}
+				Position={this.props.Position}
 				Rotation={this.props.Rotation !== undefined ? this.props.Rotation : 0}
 				Size={_SIZE}
 				Visible={this.props.Visible !== undefined ? this.props.Visible : true}
